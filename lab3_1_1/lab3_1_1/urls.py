@@ -7,6 +7,7 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
+     (r'^$', books),
     (r'^books/$', books),
     (r'^admin/', include(admin.site.urls)),
     (r'^book_detail/', book_detail),
