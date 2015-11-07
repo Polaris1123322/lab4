@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>在线图书馆</title>
+ 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+ 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 	<link href="/static/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+	<div class="row">
+		<nav class="navbar navbar-default offset2 " role="navigation">
+		<div class="navbar-header">
+			<a href="/books/" class="navbar-brand"><h2>在线图书馆</h2></a>
+		</div>
+		<div>
+			<ul class="nav navbar-nav">
+				<li><a href="/books/">书籍</a></li>
+				<li>
+					<div  class="col-lg-4">
+						<div class="input-group">
+							<form action="/books/"  method="get">
+								<input type="text" class="form-contrl" name="author" placeholder="搜＂书名＂"/>
+								<span class="input-group-btn">
+									<button class="btn" type="submit">
+										Go!
+									</button>
+								</span>
+							</form>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+		</nav>
+	</div>
+	<div class="container">
+		<div >
+			<table class="table table-hover ">
+				<caption>
+					<h3>Book List</h3>
+					<button onclick="javascript:window.location.href='/add_book/';">按钮</button> 
+				</caption>
+				<thead>
+					<tr>
+						<th>书名</th>
+						<th>作者</th>
+						<th>出版社</th>
+						<th>价格</th>
+						<th>动作</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for item in item_list %}
+						<tr>
+							<td><a href= {{item.link}} style="text-decoration:none;">{{ item.title}}</a></td>
+							<td>{{ item.author }}</td>
+							<td>{{ item.publisher }}</td>
+							<td>{{ item.price }}</td>
+							<td><a href= {{item.del}} >del</a>
+							<a href={{item.edi}}>edi </a></td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</body>
+</html>
+
